@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Typography, Box } from "@mui/material";
+import { Button, Typography, Box, Grid, Paper } from "@mui/material";
 
 interface RequestDetail {
   id: number;
@@ -8,6 +8,7 @@ interface RequestDetail {
   fio: string;
   email: string;
   requestTypeId: number;
+  statusId: number;
 }
 
 const requestTypeNames: Record<number, string> = {
@@ -83,21 +84,61 @@ const RequestDetailsPage = () => {
   }, [requestId]);
 
   if (!requestDetails) {
-    return <Typography>Loading request details...</Typography>;
+    return <Typography>Загрузка...</Typography>;
   }
 
   const requestTypeName =
     requestTypeNames[requestDetails.requestTypeId] || "Unknown";
-
   return (
-    <Box>
-      <Typography variant="h4">Детализация</Typography>
-      <Typography>Телефон: {requestDetails.phoneNumber}</Typography>
-      <Typography>ФИО: {requestDetails.fio}</Typography>
-      <Typography>Email: {requestDetails.email}</Typography>
-      <Typography>Тип заявки: {requestTypeName}</Typography>
-      <Button onClick={() => handleStatusChange(true)}>Завершить</Button>
-      <Button onClick={() => handleStatusChange(false)}>Отменить</Button>
+    <Box sx={{ padding: "20px" }}>
+      <Paper elevation={3} sx={{ padding: "20px", marginBottom: "20px" }}>
+        <Typography variant="h4" gutterBottom>
+          Детализация заявки
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="subtitle1">
+              <b>Телефон:</b> {requestDetails.phoneNumber}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="subtitle1">
+              <b>ФИО:</b> {requestDetails.fio}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="subtitle1">
+              <b>Email:</b> {requestDetails.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="subtitle1">
+              <b>Тип заявки:</b> {requestTypeName}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="subtitle1">
+              <b>Статус:</b> {requestDetails.statusId}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Paper>
+      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleStatusChange(true)}
+        >
+          Завершить
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleStatusChange(false)}
+        >
+          Отменить
+        </Button>
+      </Box>
     </Box>
   );
 };

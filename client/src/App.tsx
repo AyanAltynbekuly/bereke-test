@@ -35,6 +35,21 @@ const theme = createTheme({
         root: {},
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: "white",
+        },
+      },
+    },
+  },
+  palette: {
+    primary: {
+      main: "#00bb00",
+    },
+    secondary: {
+      main: "#023dff",
+    },
   },
 });
 const App: React.FC = () => {

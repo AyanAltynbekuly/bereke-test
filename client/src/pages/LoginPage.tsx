@@ -67,7 +67,7 @@ const LoginPage: React.FC = () => {
           required
           fullWidth
           name="phoneNumber"
-          label="Phone Number"
+          label="Телефон"
           type="tel"
           autoComplete="tel"
           autoFocus
@@ -80,7 +80,7 @@ const LoginPage: React.FC = () => {
           required
           fullWidth
           name="password"
-          label="Password"
+          label="Пароль"
           type="password"
           autoComplete="current-password"
           value={loginForm.password}

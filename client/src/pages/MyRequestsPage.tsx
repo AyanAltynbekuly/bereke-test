@@ -28,6 +28,7 @@ interface Request {
   phoneNumber: string;
   fio: string;
   email: string;
+  statusId: number;
 }
 
 const MyRequestsPage = () => {
@@ -78,13 +79,16 @@ const MyRequestsPage = () => {
             <TableCell align="center">ФИО</TableCell>
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Статус</TableCell>
+            <TableCell align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {requests.length === 0 ? (
             <TableRow>
               <TableCell colSpan={5} align="center">
-                <Typography variant="h6">No requests found.</Typography>
+                <Typography variant="h6">
+                  Никаких запросов не найдено
+                </Typography>
               </TableCell>
             </TableRow>
           ) : (
@@ -96,8 +100,12 @@ const MyRequestsPage = () => {
                 <TableCell align="center">{request.phoneNumber}</TableCell>
                 <TableCell align="center">{request.fio}</TableCell>
                 <TableCell align="center">{request.email}</TableCell>
+                <TableCell align="center">{request.statusId}</TableCell>
                 <TableCell align="center">
-                  <Button onClick={() => navigate(`/requests/${request.id}`)}>
+                  <Button
+                    variant="contained"
+                    onClick={() => navigate(`/requests/${request.id}`)}
+                  >
                     Детализация
                   </Button>
                 </TableCell>

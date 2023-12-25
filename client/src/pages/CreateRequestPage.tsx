@@ -57,14 +57,14 @@ const CreateRequestPage = () => {
       const result = await response.json();
 
       if (response.ok) {
-        setSuccessMessage("Request created successfully");
+        setSuccessMessage("Заявка была успешно создана");
         setErrorMessage("");
       } else {
-        setErrorMessage(result.errorMessage || "Error creating request");
+        setErrorMessage(result.errorMessage || "Ошибка при создании заявки");
         setSuccessMessage("");
       }
     } catch (error) {
-      setErrorMessage("Network error");
+      setErrorMessage("Ошибка сети");
       setSuccessMessage("");
     }
   };
@@ -122,7 +122,13 @@ const CreateRequestPage = () => {
         margin="normal"
         required
       />
-      <Button type="submit" variant="contained" color="success">
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+        color="primary"
+      >
         Создать заявку
       </Button>
       {successMessage && <Alert severity="success">{successMessage}</Alert>}

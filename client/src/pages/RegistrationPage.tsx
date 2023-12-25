@@ -64,23 +64,23 @@ const RegistrationPage: React.FC = () => {
 
       if (data.statusCode === 0) {
         console.log("Registration successful:", data);
-        setSuccessMessage("Registration successful!");
+        setSuccessMessage("Регистрация прошла успешно!");
         setIsLoggedIn(true);
         // Redirect
         setTimeout(() => navigate("/dashboard"), 3000);
       } else {
         console.error("Registration failed:", data.errorMessage);
-        setErrorMessage(data.errorMessage || "Registration failed.");
+        setErrorMessage(data.errorMessage || "Ошибка при регистрации");
       }
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error during registration:", error.message);
         setErrorMessage(
-          error.message || "An error occurred during registration."
+          error.message || "Во время регистрации произошла ошибка."
         );
       } else {
         console.error("Error during registration:", error);
-        setErrorMessage("An unknown error occurred during registration.");
+        setErrorMessage("Во время регистрации произошла неизвестная ошибка");
       }
     }
   };
@@ -132,7 +132,7 @@ const RegistrationPage: React.FC = () => {
         onChange={handleChange}
       />
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-        Register
+        Зарегистрироваться
       </Button>
     </Box>
   );

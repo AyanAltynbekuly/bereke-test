@@ -13,13 +13,13 @@ const Dashboard: React.FC = () => {
       }}
     >
       <Typography variant="h4" sx={{ marginBottom: "20px" }}>
-        Dashboard
+        Панель управления
       </Typography>
       <Box>
         <Button
           variant="contained"
           component={Link}
-          color="success"
+          color="primary"
           to="/create-request"
           sx={{ marginRight: "10px" }}
         >
@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
         </Button>
         <Button
           variant="contained"
-          color="success"
+          color="primary"
           component={Link}
           to="/my-requests"
         >
